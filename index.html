@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endeavor GCSI Procedure Room Recording System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Datepicker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gradient-primary">
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="text-gray-900 mb-4">Welcome to Endeavor GCSI's Procedure Room Recording System!</h1>
+                                    </div>
+                                    <form id="procedureForm" class="user">
+                                        <div class="form-group">
+                                            <label for="studentName" class="form-label">Student Name (first, last):</label>
+                                            <input type="text" class="form-control form-control-user"
+                                                id="studentName" placeholder="e.g., John Chen" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="facilitatorName" class="form-label">Facilitator Name (first, last):</label>
+                                            <input type="text" class="form-control form-control-user"
+                                                id="facilitatorName" placeholder="e.g., Ernest Wang" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="date" class="form-label">Date:</label>
+                                            <input type="text" class="form-control form-control-user"
+                                                id="date" placeholder="mm/dd/yyy" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="procedureDescription" class="form-label">Procedure Description:</label>
+                                            <input type="text" class="form-control form-control-user"
+                                                id="procedureDescription" placeholder="e.g., nasogastric tubing" required>
+                                        </div>
+                                        <hr>
+                                        <div class="text-center">
+                                            <button type="button" id="proceedToRecordingButton" class="btn btn-success">Proceed to recording</button>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Javascript needed for Bootstrap calendar selection feature-->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Confirm Info Modal -->
+    <div class="modal" id="confirmInfoModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Confirm Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Student Name:</strong> <span id="confirmStudentName"></span></p>
+                    <p><strong>Facilitator Name:</strong> <span id="confirmFacilitatorName"></span></p>
+                    <p><strong>Date:</strong> <span id="confirmDate"></span></p>
+                    <p><strong>Procedure Description:</strong> <span id="confirmProcedureDescription"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                    <button type="button" id="confirmSubmitButton" class="btn btn-success">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--reference script-->
+    <script src="index.js"></script>
+</body>
+
+</html>
+

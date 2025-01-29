@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endeavor GCSI Procedure Room Recording System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+     <!-- Custom fonts for this template-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gradient-primary">
+     <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h2>Record Your Video</h2>
+                                </div>
+                                <div class="video-container">
+                                    <div class="video-item">
+                                        <span id="videoLabel" role="label">Live Camera Stream</span>
+                                        <video id="video" autoplay aria-labelledby="videoLabel"></video>
+                                    </div>
+                                    <div class="video-item">
+                                        <span id="replayVideoLabel" role="label">Replay Recorded Video</span>
+                                        <video id="replayVideo" controls style="display: none;" aria-labelledby="replayVideoLabel"></video>
+                                    </div>
+                                </div>
+                                <div class="recording-buttons">
+                                    <button id="recordButton" class="btn btn-success btn-lg">
+                                        <i class="fas fa-circle-dot"></i> Start Recording
+                                    </button>
+                                    
+                                    <button id="replayButton" class="btn btn-warning hidden">
+                                        <i class="fas fa-rotate-left"></i> Replay
+                                    </button>
+                                    
+                                    <button id="deleteButton" class="btn btn-danger hidden">
+                                        <i class="fas fa-trash"></i> Delete Recording
+                                    </button>
+                                    
+                                    <button id="uploadVideoButton" class="btn btn-primary hidden">
+                                        <i class="fas fa-upload"></i> Upload Video
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Confirmation Modal -->
+    <div class="modal" id="uploadConfirmationModal" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Are you sure you want to upload this video?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirmUpload" class="btn btn-success">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!--reference script-->
+    <script src="recording.js"></script>
+</body>
+
+</html>

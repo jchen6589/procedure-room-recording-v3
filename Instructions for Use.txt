@@ -1,0 +1,20 @@
+Administrator (GCSI): 
+1. Download OBS studio
+	-Set up and start virtual camera in OBS
+	-add ipad cameras to "Browser" (MUST SELECT NO AUDIO from 	ipads)
+2. Set up and open guest account in kiosk mode (set to open Chrome with URL: https://jchen6589.github.io/procedure-room-recording-v2/) 
+3. Open privacy/security setting in Chrome window
+	-Set camera to "OBS virtual camera"
+4. Open Downloads settings in Chrome window
+	-Set download folder to desired folder
+5. Leave webpage on start screen
+6. After student recording, send .webm files to facilitators
+
+Student:
+1. Enter information
+2. Record video
+3. Upload video
+
+Facilitator:
+1. Download .webm files
+2. To view, either convert to mp4 using web converter OR right click file and open in browser (Chrome, Edge, etc.)
