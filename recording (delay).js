@@ -43,7 +43,13 @@ function startCamera() {
 .then(stream => {
   video.srcObject = stream;
   video.muted = true;  // This will mute the audio from the video element (prevents echoing)
-  const options = { mimeType: 'video/mp4' }; 
+  let options = { mimeType: 'video/webm;codecs=vp8,opus' }; 
+
+        // 🔹 Check if browser supports MIME type
+        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+            console.warn("MIME type not supported. Using default.");
+            options = {}; // Let the browser choose the default
+        }
   mediaRecorder = new MediaRecorder(stream, options);
 
   mediaRecorder.ondataavailable = event => {
@@ -87,10 +93,32 @@ confirmUploadButton.addEventListener("click", () => {
 
 // start recording
 function startRecording() {
-    recordedChunks = [];
-    mediaRecorder.start(1000);  // 🔹 Force data every 1000ms (1 second)
-    console.log("MediaRecorder state:", mediaRecorder?.state);
-    console.log('Recording started');
+  recordedChunks = [];
+    
+  if (!mediaRecorder) {
+      console.error("MediaRecorder not initialized.");
+      return;
+  }
+
+  console.log("MediaRecorder state before start:", mediaRecorder.state);
+  
+  mediaRecorder.start(1000); // Force chunk retrieval every second
+
+  mediaRecorder.onstart = () => {
+      console.log("Recording officially started!");
+  };
+
+  mediaRecorder.ondataavailable = event => {
+      if (event.data.size > 0) {
+          recordedChunks.push(event.data);
+          console.log("Chunk received, size:", event.data.size);
+      } else {
+          console.warn("Received empty chunk.");
+      }
+  };
+
+  console.log("MediaRecorder state after start:", mediaRecorder.state);
+  console.log('Recording started');
   }
 
 //stop recording
