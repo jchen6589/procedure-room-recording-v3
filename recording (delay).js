@@ -49,6 +49,7 @@ function startCamera() {
   mediaRecorder.ondataavailable = event => {
     if (event.data.size > 0) {
       recordedChunks.push(event.data);
+      console.log("Chunk received, size:", event.data.size);
     }
   };
 })
@@ -96,18 +97,22 @@ async function stopRecording() {
     mediaRecorder.stop();
     mediaRecorder.onstop = async () => {
     console.log('Recording stopped');
+    if (recordedChunks.length === 0) {
+      console.error("No recorded chunks available!");
+      alert("Recording failed. Please try again.");
+      return;
+    }
 
     const blob = new Blob(recordedChunks, { type: 'video/webm' });
-    
-    // Save the video blob to IndexedDB
+
     try {
-      await saveVideoBlobToDB(blob);
-      console.log('Video successfully saved to IndexedDB');
+        await saveVideoBlobToDB(blob);
+        console.log("Video successfully saved.");
     } catch (err) {
-        console.error('Error saving video to IndexedDB:', err);
+        console.error("Failed to save video:", err);
     }
     }; 
-    
+
   }
 
 //create video URL to use in saveVideo function (called when upload video button is clicked and confirmed)
