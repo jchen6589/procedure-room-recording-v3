@@ -43,7 +43,13 @@ function startCamera() {
 .then(stream => {
   video.srcObject = stream;
   video.muted = true;  // This will mute the audio from the video element (prevents echoing)
-  const options = { mimeType: 'video/webm;codecs=vp8,opus' }; // try different mime types
+  let options = { mimeType: 'video/webm;codecs=vp8,opus' }; 
+
+        // 🔹 Check if browser supports MIME type
+        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+            console.warn("MIME type not supported. Using default.");
+            options = {}; // Let the browser choose the default
+        }
   mediaRecorder = new MediaRecorder(stream, options);
 
   mediaRecorder.ondataavailable = event => {
