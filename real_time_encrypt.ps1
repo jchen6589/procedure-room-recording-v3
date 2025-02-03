@@ -1,7 +1,8 @@
 # Define source and destination directories
-$sourceDir = "C:\TEST"
-$destDir = "C:\EncryptedFiles"
+$sourceDir = "C:\TEST" # Adjust the path to the source folder if necessary
+$destDir = "C:\EncryptedFiles" # Adjust the path to the destination folder if necessary
 $zipExePath = "C:\Program Files\7-Zip\7z.exe"  # Adjust the path to 7z.exe if necessary
+$password = "GCSI"  # Adjust password if necessary
 
 # Create the destination folder if it doesn't exist
 if (-not (Test-Path $destDir)) {
@@ -27,7 +28,7 @@ function Encrypt-File {
     # Encrypt the file using 7-Zip
     Write-Host "Encrypting '$fileName'..."
     try {
-        & $zipExePath a -pGCSI $encryptedFilePath $filePath
+        & $zipExePath a -p$password $encryptedFilePath $filePath 
         Write-Host "Encrypted '$fileName' and saved it to '$encryptedFilePath'"
 
         # Delete the original file after encryption
