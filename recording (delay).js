@@ -95,6 +95,7 @@ confirmUploadButton.addEventListener("click", () => {
 function startRecording() {
     recordedChunks = [];
     mediaRecorder.start(1000);  // 🔹 Force data every 1000ms (1 second)
+    console.log("MediaRecorder state:", mediaRecorder?.state);
     console.log('Recording started');
   }
 
