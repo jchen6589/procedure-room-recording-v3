@@ -28,7 +28,7 @@ function Encrypt-File {
     # Encrypt the file using 7-Zip
     Write-Host "Encrypting '$fileName'..."
     try {
-        & $zipExePath a -p$password $encryptedFilePath $filePath 
+        & $zipExePath a -p"$password" $encryptedFilePath $filePath 
         Write-Host "Encrypted '$fileName' and saved it to '$encryptedFilePath'"
 
         # Delete the original file after encryption
